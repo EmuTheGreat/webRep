@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Добро пожаловать!</title>
-  <link rel="stylesheet" href="css/libs.min.css?v=1.0.4">
-  <link rel="stylesheet" href="css/style.min.css?v=1.0.4">
+  <link rel="stylesheet" href="static/main/css/libs.min.css?v=1.0.4">
+  <link rel="stylesheet" href="static/main/css/style.min.css?v=1.0.4">
 </head>
 
 <body class="page__body">
@@ -17,7 +17,8 @@
         <div class="container">
           <div class="auth__inner">
             <h1 class="title title--sz-55 title--shadow auth__title">Добро пожаловать!</h1>
-            <form class="auth__form" action="#">
+            <form class="auth__form" method="POST" action="{% url 'register_user' %}">
+              {% csrf_token %}
               <div class="auth__form-inputs">
                 <label class="input">
                   <div class="input__label">Логин</div>
@@ -51,7 +52,7 @@
                 </label>
               </div>
               <div class="auth__form-buttons">
-                <button class="button" type="button">Назад</button>
+                <button class="" type="button"><a class="button" href="./">Назад</a></button>
                 <button class="button" type="submit">Далее</button>
               </div>
             </form>

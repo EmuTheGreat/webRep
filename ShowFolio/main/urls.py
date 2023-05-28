@@ -18,5 +18,7 @@ urlpatterns = [
     path('portfolio-04-form', views.portfolio_04_form, name='portfolio-04-form'),
     path('portfolio-05-form', views.portfolio_05_form, name='portfolio-05-form'),
     path('portfolio-06-form', views.portfolio_06_form, name='portfolio-06-form'),
-    path('user', views.user, name='user')
+    path('user', views.user, name='user'),
+    path('register_user', views.register_user, name='register_user'),
+    path('user_login', views.user_login, name='user_login'),
 ]

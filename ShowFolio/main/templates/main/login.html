@@ -17,7 +17,8 @@
         <div class="container">
           <div class="auth__inner">
             <h1 class="title title--sz-55 title--shadow auth__title">Добро пожаловать!</h1>
-            <form class="auth__form" action="#">
+            <form class="auth__form" method="POST" action="{% url 'user_login' %}">
+              {% csrf_token %}
               <div class="auth__form-inputs">
                 <label class="input">
                   <div class="input__label">Логин</div>
