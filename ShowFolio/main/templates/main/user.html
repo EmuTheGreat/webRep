@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Страница пользователя</title>
-  <link rel="stylesheet" href="css/libs.min.css?v=1.0.4">
-  <link rel="stylesheet" href="css/style.min.css?v=1.0.4">
+  <link rel="stylesheet" href="static/main/css/libs.min.css?v=1.0.4">
+  <link rel="stylesheet" href="static/main/css/style.min.css?v=1.0.4">
 </head>
 
 <body class="page__body page__body--user-page">
@@ -17,7 +17,7 @@
         <div class="header__inner">
           <div class="header__left">
             <div class="logo header__logo">
-              <img src="img/logo.svg" alt="ShowPholio">
+              <img src="static/main/img/logo.svg" alt="ShowPholio">
             </div>
             <button class="header__search-btn">
               <span class="icon">
@@ -26,11 +26,11 @@
                 </svg>
               </span>
             </button>
-            <a class="header__link" href="./team.html">О Команде</a>
+            <a class="header__link" href="{% url 'home' %}">На главную</a>
           </div>
           <div class="header__user-nav">
-            <a class="button" href="./portfolio.html">Создать проект</a>
-            <a class="header__user-nav-profile" href="./user.html">
+            <a class="button" href="{% url 'portfolio' %}">Создать проект</a>
+            <a class="header__user-nav-profile" href="{% url 'user' %}">
               <span class="icon"></span>
             </a>
           </div>
@@ -47,7 +47,7 @@
                 <label class="user-page__avatar">
                   <input type="file" name="avatar">
                   <span>Фото
-                    <img src="img/user-avatar.png" alt="">
+                    <img src="static/main/img/user-avatar.png" alt="">
                   </span>
                 </label>
               </div>
@@ -69,7 +69,7 @@
                 <ul class="user-page__projects">
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="img/project-01.png" alt="">
+                      <img src="static/main/img/project-01.png" alt="">
                     </a>
                     <button class="user-page__project-edit">
                       <span class="icon">
@@ -81,7 +81,7 @@
                   </li>
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="img/project-01.png" alt="">
+                      <img src="static/main/img/project-01.png" alt="">
                       <button class="user-page__project-edit">
                         <span class="icon">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +93,7 @@
                   </li>
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="img/project-01.png" alt="">
+                      <img src="static/main/img/project-01.png" alt="">
                       <button class="user-page__project-edit">
                         <span class="icon">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +105,7 @@
                   </li>
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="img/project-01.png" alt="">
+                      <img src="static/main/img/project-01.png" alt="">
                       <button class="user-page__project-edit">
                         <span class="icon">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

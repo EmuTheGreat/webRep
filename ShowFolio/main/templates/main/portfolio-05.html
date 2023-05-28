@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Расположите фотографии так, как Вам нравится</title>
-  <link rel="stylesheet" href="css/libs.min.css?v=1.0.4">
-  <link rel="stylesheet" href="css/style.min.css?v=1.0.4">
+  <link rel="stylesheet" href="static/main/css/libs.min.css?v=1.0.4">
+  <link rel="stylesheet" href="static/main/css/style.min.css?v=1.0.4">
 </head>
 
 <body class="page__body">
@@ -43,10 +43,10 @@
             </div>
           </div>
           <div class="portfolio__buttons portfolio__buttons--grid">
-            <a class="button" href="./portfolio.html">Назад</a>
+            <a class="button" href="{% url 'portfolio' %}">Назад</a>
             <div class="portfolio__buttons-group">
               <button class="button button--primary">Сохранить</button>
-              <a class="button" href="./portfolio-05-form.html">Далее</a>
+              <a class="button" href="{% url 'portfolio-05-form' %}">Далее</a>
             </div>
           </div>
         </div>

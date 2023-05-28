@@ -26,10 +26,10 @@
                 </svg>
               </span>
             </button>
-            <a class="header__link" href="./team.html">О Команде</a>
+            <a class="header__link" href="{% url 'team' %}">О Команде</a>
           </div>
           <div class="header__right">
-            <a class="header__link" href="./login.html">Войти</a>
+            <a class="header__link" href="{% url 'login' %}">Войти</a>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
               <h1 class="title title--sz-60 title--shadow hero__title">Создай <span>уникальное</span> портфолио <span>с <span style="color: #EF858F;">ShowPholio</span>
                 </span>
               </h1>
-              <a class="button hero__button" href="./portfolio.html">Создать проект</a>
+              <a class="button hero__button" href="{% url 'portfolio' %}">Создать проект</a>
             </div>
             <div class="hero__images">
               <div class="hero__images-item" style="background-image: url(static/main/img/hero-01.png)"></div>
@@ -145,7 +145,7 @@
               <div class="content join__content">
                 <p>И начните творить прямо сейчас</p>
               </div>
-              <a class="button join__button" href="./portfolio.html">Создать проект</a>
+              <a class="button join__button" href="{% url 'portfolio' %}">Создать проект</a>
             </div>
             <div class="join__image">
               <img src="static/main/img/join-img.png" alt="">
@@ -165,10 +165,10 @@
           </div>
           <ul class="footer__nav">
             <li>
-              <a href="./team.html">О нас</a>
+              <a href="{% url 'team' %}">О нас</a>
             </li>
             <li>
-              <a href="./login.html">Войти</a>
+              <a href="{% url 'login' %}">Войти</a>
             </li>
           </ul>
         </div>

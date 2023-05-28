@@ -294,7 +294,7 @@ address {
   font-weight: 400;
   font-family: "Tenor Sans";
   font-style: normal;
-  src: url("../fonts/TenorSans-Regular.woff2") format("woff2"), url("../fonts/TenorSans-Regular.woff") format("woff"), url("../fonts/TenorSans-Regular.ttf") format("ttf");
+  src: url("static/main/fonts/TenorSans-Regular.woff2") format("woff2"), url("static/main/fonts/TenorSans-Regular.woff") format("woff"), url("static/main/fonts/TenorSans-Regular.ttf") format("ttf");
   font-display: swap;
 }
 
