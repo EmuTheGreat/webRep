@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html class="page" lang="ru">
 
@@ -6,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Страница пользователя</title>
-  <link rel="stylesheet" href="static/main/css/libs.min.css?v=1.0.4">
-  <link rel="stylesheet" href="static/main/css/style.min.css?v=1.0.4">
+  <link rel="stylesheet" href="{% static 'main/css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/style.min.css' %}">
 </head>
 
 <body class="page__body page__body--user-page">
@@ -17,7 +18,7 @@
         <div class="header__inner">
           <div class="header__left">
             <div class="logo header__logo">
-              <img src="static/main/img/logo.svg" alt="ShowPholio">
+              <img src="{% static 'main/img/logo.svg' %}" alt="ShowPholio">
             </div>
             <button class="header__search-btn">
               <span class="icon">
@@ -43,11 +44,11 @@
           <div class="user-page__inner">
             <div class="user-page__aside">
               <div class="user-page__info">
-                <div class="user-page__name">Имя Фамилия</div>
+                <div class="user-page__name">{{ user.first_name }} {{ user.last_name }}</div>
                 <label class="user-page__avatar">
                   <input type="file" name="avatar">
                   <span>Фото
-                    <img src="static/main/img/user-avatar.png" alt="">
+                    <img src="{% static 'main/img/user-avatar.png' %}" alt="">
                   </span>
                 </label>
               </div>
@@ -69,7 +70,7 @@
                 <ul class="user-page__projects">
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="static/main/img/project-01.png" alt="">
+                      <img src="{% static 'main/img/project-01.png' %}" alt="">
                     </a>
                     <button class="user-page__project-edit">
                       <span class="icon">
@@ -81,7 +82,7 @@
                   </li>
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="static/main/img/project-01.png" alt="">
+                      <img src="{% static 'main/img/project-01.png' %}" alt="">
                       <button class="user-page__project-edit">
                         <span class="icon">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +94,7 @@
                   </li>
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="static/main/img/project-01.png" alt="">
+                      <img src="{% static 'main/img/project-01.png' %}" alt="">
                       <button class="user-page__project-edit">
                         <span class="icon">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +106,7 @@
                   </li>
                   <li class="user-page__project">
                     <a class="user-page__card" href="#">
-                      <img src="static/main/img/project-01.png" alt="">
+                      <img src="{% static 'main/img/project-01.png' %}" alt="">
                       <button class="user-page__project-edit">
                         <span class="icon">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

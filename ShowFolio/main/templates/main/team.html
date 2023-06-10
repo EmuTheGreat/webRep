@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html class="page" lang="ru">
 
@@ -6,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Dream</title>
-  <link rel="stylesheet" href="static/main/css/libs.min.css?v=1.0.4">
-  <link rel="stylesheet" href="static/main/css/style.min.css?v=1.0.4">
+  <link rel="stylesheet" href="{% static 'main/css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/style.min.css' %}">
 </head>
 
 <body class="page__body">
@@ -26,7 +27,7 @@
               <div class="team-card">
                 <div class="team-card__avatar">
                   <span class="icon">
-                    <img src="static/main/img/team-01.png" alt="Мария Федорова">
+                    <img src="{% static '/main/img/team-01.png' %}" alt="Мария Федорова">
                   </span>
                 </div>
                 <p class="team-card__name">Мария Федорова</p>
@@ -37,7 +38,7 @@
               <div class="team-card">
                 <div class="team-card__avatar">
                   <span class="icon">
-                    <img src="static/main/img/team-02.png" alt="Никита Безручко">
+                    <img src="{% static '/main/img/team-02.png' %}" alt="Никита Безручко">
                   </span>
                 </div>
                 <p class="team-card__name">Никита Безручко</p>
@@ -48,7 +49,7 @@
               <div class="team-card">
                 <div class="team-card__avatar">
                   <span class="icon">
-                    <img src="static/main/img/team-03.png" alt="Екатерина Тараканова">
+                    <img src="{% static '/main/img/team-03.png' %}" alt="Екатерина Тараканова">
                   </span>
                 </div>
                 <p class="team-card__name">Екатерина Тараканова</p>
@@ -59,7 +60,7 @@
               <div class="team-card">
                 <div class="team-card__avatar">
                   <span class="icon">
-                    <img src="static/main/img/team-04.png" alt="Дмитрий Лысиков">
+                    <img src="{% static '/main/img/team-04.png' %}" alt="Дмитрий Лысиков">
                   </span>
                 </div>
                 <p class="team-card__name">Дмитрий Лысиков</p>

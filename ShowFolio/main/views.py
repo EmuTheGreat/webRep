@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from main.forms import RegistrationForm
-
+from main.forms import RegistrationForm, LoginForm
+from main.models import CustomUser
+from django.views.decorators.csrf import csrf_protect
+from django.core.exceptions import ValidationError
 
 def index(request):
     return render(request, 'main/index.html')
 def team(request):
     return render(request, 'main/team.html')
-def login(request):
+def login1(request):
     return render(request, 'main/login.html')
 def portfolio(request):
     return render(request, 'main/portfolio.html')
@@ -48,33 +49,54 @@ def register_user(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            # Создание пользователя
+            # Получение данных из формы
             username = form.cleaned_data['login']
             password = form.cleaned_data['password']
             email = form.cleaned_data['email']
             first_name = form.cleaned_data['name']
             last_name = form.cleaned_data['lastname']
 
-            # Создание и сохранение пользователя
-            user = User.objects.create_user(username=username, password=password, email=email)
-            user.first_name = first_name
-            user.last_name = last_name
-            user.save()
+            # Проверка наличия зарегистрированного логина
+            if CustomUser.objects.filter(username=username).exists():
+                form.add_error('login', 'Пользователь с таким логином уже зарегистрирован.')
 
-            # Редирект после успешной регистрации
-            return redirect('login')
+            # Проверка наличия зарегистрированного email
+            if CustomUser.objects.filter(email=email).exists():
+                form.add_error('email', 'Пользователь с таким email уже зарегистрирован.')
+
+            # Если ошибок нет, создание и сохранение пользователя
+            if not form.errors:
+                user = CustomUser.objects.create_user(username=username, password=password, email=email)
+                user.first_name = first_name
+                user.last_name = last_name
+                user.save()
+
+                # Редирект после успешной регистрации
+                return redirect('login')
     else:
         form = RegistrationForm()
+
     return render(request, 'main/register.html', {'form': form})
+
+from django.contrib import messages
 
 def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            return render(request, 'main/login.html', {'error_message': 'Invalid login credentials.'})
-    return render(request, 'main/login.html')
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            # Обработка данных формы авторизации
+            login_value = form.cleaned_data['login']
+            password = form.cleaned_data['password']
+
+            user = authenticate(request, username=login_value, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('user')
+            else:
+                # Вывод ошибки неверных учетных данных
+                messages.error(request, 'Неправильный логин или пароль.')
+    else:
+        form = LoginForm()
+    return render(request, 'main/login.html', {'form': form})
+
+

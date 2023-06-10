@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html class="page" lang="ru">
 
@@ -6,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Добро пожаловать!</title>
-  <link rel="stylesheet" href="static/main/css/libs.min.css?v=1.0.4">
-  <link rel="stylesheet" href="static/main/css/style.min.css?v=1.0.4">
+  <link rel="stylesheet" href="{% static 'main/css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/style.min.css' %}">
 </head>
 
 <body class="page__body">
@@ -37,6 +38,9 @@
                   <div class="input__box">
                     <input class="input__control" type="email" name="email">
                   </div>
+                  {% if form.errors.email %}
+                    <div class="error-message">{{ form.errors.email }}</div>
+                  {% endif %}
                 </label>
                 <label class="input">
                   <div class="input__label">Имя</div>
@@ -62,5 +66,10 @@
     </main>
   </div>
 </body>
-
+<style>
+  .error-message {
+    color: #ff0000;
+    font-size: 14px;
+  }
+</style>
 </html>

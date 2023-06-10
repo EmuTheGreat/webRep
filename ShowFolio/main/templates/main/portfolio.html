@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html class="page" lang="ru">
 
@@ -6,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Расположите фотографии так, как Вам нравится</title>
-  <link rel="stylesheet" href="static/main/css/libs.min.css?v=1.0.4">
-  <link rel="stylesheet" href="static/main/css/style.min.css?v=1.0.4">
+  <link rel="stylesheet" href="{% static 'main/css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/style.min.css' %}">
 </head>
 
 <body class="page__body">
@@ -22,32 +23,32 @@
           <ul class="portfolio__list">
             <li class="portfolio__item">
               <a class="portfolio__item-link" href="{% url 'portfolio-01' %}">
-                <img src="static/main/img/portfolio-01.svg" alt="">
+                <img src="{% static 'main/img/portfolio-01.svg' %}" alt="">
               </a>
             </li>
             <li class="portfolio__item">
               <a class="portfolio__item-link" href="{% url 'portfolio-02' %}">
-                <img src="static/main/img/portfolio-02.svg" alt="">
+                <img src="{% static 'main/img/portfolio-02.svg' %}" alt="">
               </a>
             </li>
             <li class="portfolio__item">
               <a class="portfolio__item-link" href="{% url 'portfolio-03' %}">
-                <img src="static/main/img/portfolio-03.svg" alt="">
+                <img src="{% static 'main/img/portfolio-03.svg' %}" alt="">
               </a>
             </li>
             <li class="portfolio__item">
               <a class="portfolio__item-link" href="{% url 'portfolio-04' %}">
-                <img src="static/main/img/portfolio-04.svg" alt="">
+                <img src="{% static 'main/img/portfolio-04.svg' %}" alt="">
               </a>
             </li>
             <li class="portfolio__item">
               <a class="portfolio__item-link" href="{% url 'portfolio-05' %}">
-                <img src="static/main/img/portfolio-05.svg" alt="">
+                <img src="{% static 'main/img/portfolio-05.svg' %}" alt="">
               </a>
             </li>
             <li class="portfolio__item">
               <a class="portfolio__item-link" href="{% url 'portfolio-06' %}">
-                <img src="static/main/img/portfolio-06.svg" alt="">
+                <img src="{% static 'main/img/portfolio-06.svg' %}" alt="">
               </a>
             </li>
           </ul>
