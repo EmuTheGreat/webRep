@@ -1,0 +1,35 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Достижение</title>
+  <link rel="stylesheet" href="{% static 'css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body class="page__body">
+  <div class="page__wrapper">
+    <main class="main page__main">
+      <section class="achievement">
+        <div class="container">
+          <h1 class="title title--sz-55 achievement__title">Поздравляем!</h1>
+          <p class="achievement__text">Вы получили достижение <span style="color: #E56F7D;">“50 Лайков”</span>
+          </p>
+          <div class="achievement__image achievement__image--big">
+            <img src="{% static 'img/icons/achievement-05-active.svg' %}" alt="">
+          </div>
+          <p class="achievement__text">Все достижения Вы можете посмотреть в профиле в разделе “Достижения”</p>
+          <a class="button achievement__button" href="/">Хорошо</a>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

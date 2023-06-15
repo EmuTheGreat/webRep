@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "resumer"
+version = "0.1.0"
+description = ""
+authors = ["abulaysov <abulaysovv@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "^4.2.2"
+pillow = "^9.5.0"
+black = "^23.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+

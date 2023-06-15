@@ -1,0 +1,57 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добро пожаловать!</title>
+  <link rel="stylesheet" href="{% static 'css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body class="page__body">
+  <div class="page__wrapper">
+    <main class="main page__main">
+      <section class="auth">
+        <div class="container">
+          <div class="auth__inner">
+            <h1 class="title title--sz-55 title--shadow auth__title">Добро пожаловать!</h1>
+            <form class="auth__form" method="POST" action="#">{% csrf_token %}
+              <div class="auth__form-inputs">
+                <label class="input">
+                  <div class="input__label">Логин</div>
+                  <div class="input__box">
+                    <input class="input__control" type="text" name="login">
+                  </div>
+                </label>
+                <label class="input">
+                  <div class="input__label">Пароль</div>
+                  <div class="input__box">
+                    <input class="input__control" type="password" name="password">
+                  </div>
+                </label>
+              </div>
+              <div class="auth__form-bottom">
+                <a class="auth__form-link" href="{% url 'reset-password' %}">Забыли пароль?</a>
+              </div>
+              <div class="auth__form-bottom" style="flex-direction: column; text-align: center;">
+                <p class="auth__form-link">Еще не зарегестрированы?</p>
+                <a class="auth__form-link" href="{% url 'create-user' %}">Зарегистрироваться</a>
+              </div>
+              <div class="auth__form-buttons auth__form-buttons--login">
+                <a class="button" href="{% url 'main-page' %}">Назад</a>
+                <button class="button" type="submit">Далее</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

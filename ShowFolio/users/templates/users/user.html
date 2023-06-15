@@ -1,0 +1,257 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страница пользователя</title>
+  <link rel="stylesheet" href="{% static 'css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body class="page__body page__body--user-page" style="background-color: #f8f8f8;">
+  <div class="page__wrapper">
+    <header class="header header--user-page" style="background-color: #f8f8f8;">
+      <div class="container">
+        <div class="header__inner">
+          <div class="header__left">
+            <div class="logo header__logo">
+              <img src="{% static 'img/logo.svg' %}" alt="ShowPholio">
+            </div>
+            <a class="header__search-btn" href="{% url 'search' %}">
+              <span class="icon">
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M23.4886 25.5932L15.2159 17.3087C14.4773 17.9004 13.6278 18.3689 12.6676 18.7141C11.7074 19.0593 10.6856 19.2319 9.60227 19.2319C6.91856 19.2319 4.6475 18.3008 2.78909 16.4388C0.930682 14.5768 0.000984848 12.3025 0 9.61593C0 6.9284 0.929697 4.65411 2.78909 2.79306C4.64848 0.932006 6.91955 0.000986249 9.60227 0C12.286 0 14.557 0.931019 16.4155 2.79306C18.2739 4.6551 19.2036 6.92939 19.2045 9.61593C19.2045 10.7008 19.0322 11.724 18.6875 12.6856C18.3428 13.6472 17.875 14.4979 17.2841 15.2376L25.5937 23.559C25.8646 23.8302 26 24.1631 26 24.5576C26 24.9521 25.8523 25.2973 25.5568 25.5932C25.286 25.8644 24.9413 26 24.5227 26C24.1042 26 23.7595 25.8644 23.4886 25.5932ZM9.60227 16.2731C11.4489 16.2731 13.0187 15.6256 14.3118 14.3307C15.6049 13.0358 16.251 11.4642 16.25 9.61593C16.25 7.76671 15.6034 6.19463 14.3103 4.89969C13.0172 3.60474 11.4479 2.95776 9.60227 2.95875C7.75568 2.95875 6.18583 3.60622 4.89273 4.90117C3.59962 6.19611 2.95356 7.7677 2.95455 9.61593C2.95455 11.4651 3.6011 13.0372 4.8942 14.3322C6.18731 15.6271 7.75667 16.2741 9.60227 16.2731Z" fill="currentColor"></path>
+                </svg>
+              </span>
+            </a>
+            <a class="header__link" href="{% url 'team' %}">О Команде</a>
+          </div>
+          <div class="header__user-nav">
+            <a class="button" href="{% url 'create-portfolio' %}">Создать проект</a>
+            <a class="header__user-nav-profile" href="{% url 'user-profile' slug=request.user.pk %}">
+              <span class="icon"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main page__main">
+      <div class="user-page" style="background-color: #f8f8f8;">
+        <div class="container">
+          <div class="user-page__inner">
+            <div class="user-page__aside" style="flex-shrink: 0;">
+              <div class="user-page__info">
+                <div class="user-page__name">{{user.first_name}} {{user.last_name}}</div>
+                <label class="user-page__avatar">
+                  <input type="file" name="avatar">
+                  <span>Фото
+                    <img src="/media/{{user.avatar}}" alt="">
+                  </span>
+                </label>
+              </div>
+              <div class="content user-page__about">{{ user.bio }}</div>
+              <ul class="user-page__nav">
+                <li>
+                  <a href="{{ request.path }}achievements/">Достижения</a>
+                </li>
+                <li>
+                  <a href="#">Проекты</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="user-page__main" style="overflow: hidden;">
+              <div class="user-page__name">Имя Фамилия</div>
+              <div class="user-page__body">
+
+                <div class="user-page__projects-list">
+                  <div class="user-page__projects-group" id="projects-list">
+                    {% for p, image in part_1 %}
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="/media/{{ image.image }}" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">{{ p.title }}</span>
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </div>
+
+
+                  <div class="user-page__projects-group">
+                    {% for p, image in part_2 %}
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="/media/{{ image.image }}" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">{{ p.title }}</span>
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </div>
+
+                  <div class="user-page__projects-group">
+                    {% for p, image in part_3 %}
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="/media/{{ image.image }}" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">{{ p.title }}</span>
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </div>
+                </div>
+                <!-- <ul class="user-page__projects">
+                  <div class="user-page__projects-group">
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="img/project-01.png" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">Название работы</span>
+                      </a>
+                    </li>
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="img/project-01.png" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">Название работы</span>
+                      </a>
+                    </li>
+                  </div>
+                  <div class="user-page__projects-group">
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="img/project-01.png" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">Название работы</span>
+                      </a>
+                    </li>
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="img/project-01.png" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">Название работы</span>
+                      </a>
+                    </li>
+                  </div>
+                  <div class="user-page__projects-group">
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="img/project-01.png" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">Название работы</span>
+                      </a>
+                    </li>
+                    <li class="user-page__project">
+                      <a class="user-page__card" href="#">
+                        <img src="img/project-01.png" alt="">
+                        <button class="user-page__project-edit">
+                          <span class="icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17.2583 5.8668C17.5833 5.5418 17.5833 5.00013 17.2583 4.6918L15.3083 2.7418C15 2.4168 14.4583 2.4168 14.1333 2.7418L12.6 4.2668L15.725 7.3918M2.5 14.3751V17.5001H5.625L14.8417 8.27513L11.7167 5.15013L2.5 14.3751Z" fill="black" fill-opacity="0.6"></path>
+                            </svg>
+                          </span>
+                        </button>
+                        <span class="user-page__card-name">Название работы</span>
+                      </a>
+                    </li>
+                  </div>
+                </ul> -->
+                <div class="user-page__navigation">
+                  <button class="user-page__navigation-btn user-page__navigation-btn--prev">
+                    <span class="icon">
+                      <svg width="67" height="8" viewBox="0 0 67 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.32866 0.464318L0.146683 3.6463C-0.0485764 3.84156 -0.0485764 4.15814 0.146683 4.3534L3.32866 7.53539C3.52393 7.73065 3.84051 7.73065 4.03577 7.53539C4.23103 7.34012 4.23103 7.02354 4.03577 6.82828L1.70734 4.49985H66.5078V3.49985H1.70734L4.03577 1.17142C4.23103 0.976162 4.23103 0.65958 4.03577 0.464318C3.84051 0.269056 3.52393 0.269056 3.32866 0.464318Z" fill="black"></path>
+                      </svg>
+                    </span>
+                    <span></span>
+                  </button>
+                  <button class="user-page__navigation-btn user-page__navigation-btn--next">
+                    <span>Далее</span>
+                    <span class="icon">
+                      <svg width="67" height="8" viewBox="0 0 67 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M63.1791 0.464318L66.3611 3.6463C66.5564 3.84156 66.5564 4.15814 66.3611 4.3534L63.1791 7.53539C62.9839 7.73065 62.6673 7.73065 62.472 7.53539C62.2768 7.34012 62.2768 7.02354 62.472 6.82828L64.8005 4.49985H0V3.49985H64.8005L62.472 1.17142C62.2768 0.976162 62.2768 0.65958 62.472 0.464318C62.6673 0.269056 62.9839 0.269056 63.1791 0.464318Z" fill="black"></path>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    const projectsList = document.querySelector(".user-page__projects-list");
+    const projectsLeftButton = document.querySelector(".user-page__navigation-btn--prev");
+    const projectsRightButton = document.querySelector(".user-page__navigation-btn--next");
+    const deltaSpeed = 100;
+
+    if (projectsList && projectsLeftButton && projectsRightButton) {
+      projectsLeftButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        projectsList.scrollLeft -= deltaSpeed;
+      });
+      projectsRightButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        projectsList.scrollLeft += deltaSpeed;
+      });
+    }
+  </script>
+</body>
+
+</html>

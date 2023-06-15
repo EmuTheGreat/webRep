@@ -1,0 +1,61 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html class="page" lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расположите фотографии так, как Вам нравится</title>
+  <link rel="stylesheet" href="{% static 'css/libs.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body class="page__body">
+  <div class="page__wrapper">
+    <main class="main page__main">
+      <section class="portfolio">
+        <div class="container">
+          <div class="portfolio__top">
+            <h1 class="title title--sz-40 title--shadow portfolio__title">Отлично! Теперь Вы можете загрузить фотографии Ваших работ</h1>
+          </div>
+          <form method="post" enctype="multipart/form-data" action="#">{% csrf_token %}
+          <div class="portfolio__inner">
+            <div class="portfolio__grid portfolio__grid--3">
+              <label class="portfolio__grid-item">
+                <input type="file" name="photo-01">
+                <span>Добавить фото</span>
+              </label>
+              <label class="portfolio__grid-item">
+                <input type="file" name="photo-02">
+                <span>Добавить фото</span>
+              </label>
+              <label class="portfolio__grid-item">
+                <input type="file" name="photo-03">
+                <span>Добавить фото</span>
+              </label>
+              <label class="portfolio__grid-item">
+                <input type="file" name="photo-04">
+                <span>Добавить фото</span>
+              </label>
+              <label class="portfolio__grid-item">
+                <input type="file" name="photo-05">
+                <span>Добавить фото</span>
+              </label>
+            </div>
+          </div>
+          <div class="portfolio__buttons portfolio__buttons--grid">
+            <div class="portfolio__buttons-group">
+              <button class="button button--primary">Далее</button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
