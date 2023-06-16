@@ -141,4 +141,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
 EMAIL_HOST_USER = 'thegreatfrut@gmail.com'
-EMAIL_HOST_PASSWORD = 'Telekon228/21' #past the key or password app here
+EMAIL_HOST_PASSWORD = 'wzqwirvvtlmvkqle' #past the key or password app here
+EMAIL_HOST = "smtp.gmail.com"

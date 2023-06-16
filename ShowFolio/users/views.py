@@ -12,6 +12,8 @@ class RegisterView(View):
     def post(self, request, *args, **kwargs):
         form = forms.RegisterForm(request.POST)
         if form.is_valid():
+            if User.objects.filter(email=request.POST.get("email")).exists():
+                return render(request, "users/register.html")
             user = form.save()
             login(request, user)
             return redirect("set-avatar")
@@ -54,7 +56,7 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect("/")
+                return HttpResponseRedirect(f"/user/{user.username}/")
         return render(request, "users/login.html")
 
     def get(self, request, *args, **kwargs):
@@ -165,7 +167,6 @@ class PortfolioCreateView(View):
             ach = Achievement.objects.filter(
                 user=request.user,
                 achievement=Achievement.AchievChoice.FIRST_PROJECT,
-                mark_as_read=False,
             )
             if not ach:
                 Achievement.objects.create(

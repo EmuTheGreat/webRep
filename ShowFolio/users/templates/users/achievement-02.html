@@ -25,7 +25,7 @@
             <img src="{% static 'img/icons/achievement-02-active.svg' %}" alt="">
           </div>
           <p class="achievement__text">Все достижения Вы можете посмотреть в профиле в разделе “Достижения”</p>
-          <a class="button achievement__button" href="/">Хорошо</a>
+          <a class="button achievement__button" href="{% url 'user-profile' slug=request.user.username %}">Хорошо</a>
         </div>
       </section>
     </main>
